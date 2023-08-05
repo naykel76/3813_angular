@@ -1,0 +1,23 @@
+<div class="container maxw-sm">
+    <div class="flex py-3">
+        <img src="/assets/favicon.svg" alt="Nathan Watts Favicon" class="mx-auto h-10">
+    </div>
+
+    <p class="message txt-red hidden tac">User credentials do not match</p>
+
+    <p class="txt-red">{{ message }}</p>
+
+    <div class="bx" id="loginForm">
+        <div class="frm-row">
+            <label for="username">Username</label>
+            <input type="text" name="username" [(ngModel)]="username">
+        </div>
+        <div class="frm-row">
+            <label for="password">Password</label>
+            <input type="password" name="password" [(ngModel)]="password">
+        </div>
+        <div class="frm-row">
+            <button (click)="login()" type="submit" class="btn primary">Login</button>
+        </div>
+    </div>
+</div>

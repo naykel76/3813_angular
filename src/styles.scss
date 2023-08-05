@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+// // @use "node_modules/nk_jtb/scss/base/vars_colors" as;
+// @use "node_modules/nk_jtb/scss/base/vars_base" as *;
+
+@use "node_modules/nk_jtb/src/scss/base/vars_components" as * with (
+    $menu-hover-bg: #141925,
+    $navbar-bg: black,
+    $navbar-nav-active-color: #ffbb1c,
+    $navbar-nav-hover-color: #ffbb1c,
+    $navbar-padding-y: 1rem
+);
+
+@use "node_modules/nk_jtb/src/jtb";
