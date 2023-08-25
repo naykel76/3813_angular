@@ -3,6 +3,11 @@
         <ul class="space-x">
             <li><a routerLink="/login"> Login </a></li>
             <li><a routerLink="/account"> Account </a></li>
+            <li><a routerLink="/profile"> Profile </a></li>
+
+            <li *ngIf="loggedIn">
+                <button (click)="logout()" class="btn">Logout</button>
+            </li>
         </ul>
     </nav>
 </div>

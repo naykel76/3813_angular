@@ -1,0 +1,16 @@
+<div class="container maxw-sm">
+
+
+    <div class="my-5">
+        <div class="frm-row">
+            <label for="username">User Name</label>
+            <input [(ngModel)]="user.username" name="username">
+        </div>
+        <div class="frm-row">
+            <label for="age">Age</label>
+            <input [(ngModel)]="user.age" name="age">
+        </div>
+
+        <button (click)="update()" class="btn primary">Update</button>
+    </div>
+</div>

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { HttpTestingComponent } from './http-testing.component';
 
 @Component({
@@ -11,5 +11,18 @@ import { HttpTestingComponent } from './http-testing.component';
     styles: []
 })
 export class AppComponent {
+
     title = '3813_angular';
+    loggedIn: boolean;
+
+    private router = inject(Router);
+
+    constructor() {
+        this.loggedIn = Boolean(sessionStorage.getItem('loggedIn')) ?? false;
+    }
+
+    logout() {
+        sessionStorage.clear();
+        this.router.navigate(['/']);
+    }
 }

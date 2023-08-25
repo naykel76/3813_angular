@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('birthdate', data.user.birthdate);
         sessionStorage.setItem('age', data.user.age);
         sessionStorage.setItem('email', data.user.email);
+        sessionStorage.setItem('loggedIn', 'true');
         this.router.navigate(['/account']);
     }
 
