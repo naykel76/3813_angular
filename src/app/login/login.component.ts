@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,20 +12,33 @@ import { Router } from '@angular/router';
     styles: [
     ]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
     username: string = 'billy27';
     password: string = 'abc123';
     message: string = '';
 
-    constructor(private router: Router) { }
+    private authService = inject(AuthService);
+    private router = inject(Router);
+
+    ngOnInit(): void { }
 
     login() {
-        if (this.username == 'billy27' && this.password == 'abc123') {
-            this.router.navigate(['/account'])
-        } else {
-            this.message = 'The email or password is incorrect.'
-        }
+        this.authService.login(this.username, this.password).subscribe(data => {
+            data.valid
+                ? this.handleLogin(data)
+                : this.message = 'Invalid username or password';
+        });
+    }
+
+    handleLogin(data: any) {
+
+        // don't judge me, it works!
+        sessionStorage.setItem('username', data.user.username);
+        sessionStorage.setItem('birthdate', data.user.birthdate);
+        sessionStorage.setItem('age', data.user.age);
+        sessionStorage.setItem('email', data.user.email);
+        this.router.navigate(['/account']);
     }
 
 }
